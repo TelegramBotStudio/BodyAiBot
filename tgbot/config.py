@@ -66,7 +66,7 @@ class LogConfig:
 
 @dataclass
 class Miscellaneous:
-    pass
+    photo_examples_url: str
 
 
 @dataclass
@@ -111,5 +111,7 @@ def load_config(path: str | None = None) -> Config:
             rotation=datetime.strptime(env.str('LOG_ROTATION'), '%H:%M').time(),
             retention=timedelta(days=env.int('LOG_RETENTION')),
         ),
-        misc=Miscellaneous()
+        misc=Miscellaneous(
+            photo_examples_url=env.str('PHOTO_EXAMPLES_URL'),
+        )
     )
