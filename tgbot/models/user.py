@@ -10,3 +10,5 @@ class User(TimedBaseModel):
     last_name = db.Column(db.String(255), nullable=True)
     is_banned = db.Column(db.Boolean, nullable=False, default=False)
     deep_link = db.Column(db.String(225), nullable=True)
+    subscription_id = db.Column(db.BigInteger, db.ForeignKey("subscriptions.id"), nullable=True)
+    subscription_end = db.Column(db.DateTime(True), nullable=True)
